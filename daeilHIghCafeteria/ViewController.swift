@@ -3,12 +3,12 @@
 //  daeilHIghCafeteria
 //
 //  Created by 최유진 on 2020/12/07.
-//
+//  삭제 예정
 
 import UIKit
 
 class ViewController: UIViewController {
-    // MARK: - viewDidLoad
+    // MARK: - viewDidLoad 날짜를 받아오고 api데이터를 label에 대입
     override func viewDidLoad() {
         // 현재 날짜 처리
         let currentDateYear = DateFormatter()
@@ -23,13 +23,12 @@ class ViewController: UIViewController {
         //let year = Int(currentDateYear_String)
         let month = Int(currentDateMonth_String)
         let date = Int(currentDateDay_String)
+        
         // 처리된 날짜를 라벨텍스트에 대입
-        showDateLabel.text? = "\(currentDateYear_String)-\(currentDateMonth_String)-\(currentDateDay_String)"
+        self.navigationItem.title? = "\(currentDateMonth_String)월 \(currentDateDay_String)일 메뉴"
         // API 호출을 위한 URI생성
         // https://schoolmenukr.ml/api/[학교유형]/[학교코드]?[변수명1]=[값1]&[변수명2]=[값2]
-        
-        let url = "https://schoolmenukr.ml/api/high/B100000413?month=\(month!)&date=\(date!)"
-        NSLog("\nurl 값: \(url)")
+        let url = "https://schoolmenukr.ml/api/high/B100000413?month=\(month!)&date=\(date!)&allergy=hidden"
         let apiURI: URL! = URL(string: url)
         // API 호출
         let apidata = try! Data(contentsOf: apiURI)
@@ -39,56 +38,30 @@ class ViewController: UIViewController {
         
         do {
             let apiDictionary = try JSONSerialization.jsonObject(with: apidata, options: []) as! NSDictionary
+            // 데이터가 배열로 받아짐. 오늘치 메뉴데이터는 변수명[0]으로 접근
             let menu = apiDictionary["menu"] as! NSArray
-            NSLog("\n파싱: \(menu[0]) \n")
+            // 데이터를 NSDictionary로 캐스팅 (개별요쇼 접근을 쉽게 하기위해)
             let tmenu = menu[0] as! NSDictionary
-            let date = tmenu["date"] as? String
-            NSLog("\ndate: \(date!)\n")
-            let breakfast = tmenu["breakfast"] as? [String]
-            NSLog("\nbreakfast: \(breakfast!) \n")
+            // 아침, 점심, 저녁은 각각 배열로 이루어짐. (아침 데이터 사용 안함)
             let lunch = tmenu["lunch"] as? [String]
-            NSLog("\nlunch: \(lunch!)\n")
             let dinner = tmenu["dinner"] as? [String]
-            NSLog("\ndinner: \(dinner!)\n")
-            for row in breakfast! {
-                showBreakfastLabel.text? += row
-            }
+            
+            //label에 String형태로 넣어주기 위해 각 요소 개별접근후 더해줌
             for row in lunch! {
-                showLunchLabel.text? += row
+                showLunchLabel.text? += "\n\(row)"
             }
             for row in dinner! {
                 showDinnerLabel.text? += row
             }
-            showBreakfastLabel?.numberOfLines = 0
+            // 자동 줄바꿈 설정
             showLunchLabel?.numberOfLines = 0
             showDinnerLabel?.numberOfLines = 0
-            /*
-             파싱: (
-                     {
-                     breakfast =         (
-                     );
-                     date = 7;
-                     dinner =         (
-                     );
-                     lunch =         (
-                         "`\Ud63c\Ud569\Uc7a1\Uace1\Ubc255.",
-                         "`\Uc1e0\Uace0\Uae30\Ubbf8\Uc5ed\Uad6d5.6.13.16.",
-                         "\Ub3fc\Uc9c0\Uac08\Ube44\Ucc1c5.6.10.13.",
-                         "\Ub9e4\Ucf64\Uaf2c\Uce58\Uc5b4\Ubb351.5.6.13.",
-                         "`\Ube14\Ub8e8\Ubca0\Ub9ac\Uadf8\Ub9b0\Uc0d0\Ub7ec\Ub4dc1.2.5.6.13.",
-                         "`\Ubc30\Ucd94\Uae40\Uce589.",
-                         "\Ud06c\Ub808\Uc774\Ud504\Ucf00\Uc774\Ud06c1.2.5.6."
-                     );
-                 }
-             )
-             **/
+            // 1난류, 2우유, 3메밀, 4땅콩, 5대두, 6밀, 7고등어, 8게, 9새우, 10돼지고기, 11복숭아, 12토마토
         } catch {
             NSLog("catch error")
         }
     }
     // MARK: - Label
-    @IBOutlet var showDateLabel: UILabel!
-    @IBOutlet var showBreakfastLabel: UILabel!
     @IBOutlet var showLunchLabel: UILabel!
     @IBOutlet var showDinnerLabel: UILabel!
 }
