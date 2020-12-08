@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ShowmenuTableViewController: UITableViewController {
+class ShowLunchMenuTableViewController: UITableViewController {
     // MARK: -viewdidLoad 날짜 받아오기 api데이터 cafeClass에 저장
     override func viewDidLoad() {
         let ad = UIApplication.shared.delegate as? AppDelegate
