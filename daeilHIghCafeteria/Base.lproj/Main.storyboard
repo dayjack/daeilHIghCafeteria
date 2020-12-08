@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ddB-rh-KTi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tet-qU-KKY">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,7 +26,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="17F-el-ZiQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="549" y="94"/>
+            <point key="canvasLocation" x="2889.8550724637685" y="93.75"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="gnL-AB-d65">
@@ -58,7 +60,54 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Or-eT-CLc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1267" y="821"/>
+            <point key="canvasLocation" x="1425" y="816"/>
+        </scene>
+        <!--Root View Controller-->
+        <scene sceneID="YJj-qg-Fl7">
+            <objects>
+                <tableViewController id="KYQ-X2-2Ox" customClass="SettingTableViewController" customModule="daeilHIghCafeteria" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ab5-A7-iaM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="TWf-3k-sUp">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TWf-3k-sUp" id="ivL-Gm-IMZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="KYQ-X2-2Ox" id="zv3-pp-TZk"/>
+                            <outlet property="delegate" destination="KYQ-X2-2Ox" id="Mse-ME-u76"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="ULx-Lx-kDh"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xxU-Ll-czk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3609" y="816"/>
+        </scene>
+        <!--설정-->
+        <scene sceneID="rU7-nv-3dI">
+            <objects>
+                <navigationController id="sOU-ze-fp4" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="설정" id="nTa-xO-gLO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jkg-l0-mbM">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="KYQ-X2-2Ox" kind="relationship" relationship="rootViewController" id="jcs-yB-fDW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tq6-Ek-2CZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2890" y="816"/>
         </scene>
         <!--저녁 메뉴 보기-->
         <scene sceneID="8y0-pP-ygC">
@@ -75,12 +124,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Xd-cg-5hA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="548" y="821"/>
+            <point key="canvasLocation" x="696" y="816"/>
         </scene>
         <!--Title-->
         <scene sceneID="lHO-Gw-gjQ">
             <objects>
-                <tableViewController id="Yod-cf-vyI" customClass="ShowLunchMenuTableViewController" customModule="daeilHIghCafeteria" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ShowLunchMenuTableViewController" id="Yod-cf-vyI" customClass="ShowLunchMenuTableViewController" customModule="daeilHIghCafeteria" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dba-Zi-PNe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -118,13 +167,91 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hBl-ju-I93" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1267" y="94"/>
+            <point key="canvasLocation" x="3608.6956521739135" y="93.75"/>
+        </scene>
+        <!--Login SignupVC-->
+        <scene sceneID="gSy-Je-i10">
+            <objects>
+                <viewController storyboardIdentifier="LoginSignupVC" id="KCa-5l-cXj" customClass="LoginSignupVC" customModule="daeilHIghCafeteria" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uMz-DN-zNf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ea9-o1-ojm">
+                                <rect key="frame" x="93" y="431" width="239" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZRv-FF-2Pr">
+                                <rect key="frame" x="93" y="234" width="239" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="학교 코드를 검색하세요"/>
+                                <connections>
+                                    <segue destination="9k5-uu-94v" kind="show" identifier="gotoWebView" id="ALn-Kj-plO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="wht-IL-51t"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="4sz-yK-S7O">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="5Zy-UY-cgo">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="N8K-ja-loF">
+                                <rect key="frame" x="147" y="516" width="121" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="입력"/>
+                                <connections>
+                                    <action selector="submitSchoolkey:" destination="KCa-5l-cXj" eventType="touchUpInside" id="YNC-9X-W2J"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="inputSchoolkey" destination="Ea9-o1-ojm" id="zP3-Nx-AU0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C8X-H7-ORE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="696" y="94"/>
+        </scene>
+        <!--학교 코드를 검색하세요-->
+        <scene sceneID="MqP-dP-ikU">
+            <objects>
+                <viewController id="9k5-uu-94v" customClass="SearchSchoolWKView" customModule="daeilHIghCafeteria" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="R8m-ph-CER">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D8h-MV-zqh">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Lbi-IH-aEw"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="학교 코드를 검색하세요" id="poG-kr-LMc"/>
+                    <connections>
+                        <outlet property="wv" destination="D8h-MV-zqh" id="Sri-WA-jVj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w5E-y6-ebC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2183" y="-575"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="uSr-jb-kvr">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="ddB-rh-KTi" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabVC" automaticallyAdjustsScrollViewInsets="NO" id="ddB-rh-KTi" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="gYJ-Rz-BPL"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zFt-Uu-cNK">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -133,11 +260,30 @@
                     <connections>
                         <segue destination="AhD-LE-E8C" kind="relationship" relationship="viewControllers" id="o7Z-hi-H7p"/>
                         <segue destination="FCX-M5-RMm" kind="relationship" relationship="viewControllers" id="gXL-3V-bz8"/>
+                        <segue destination="sOU-ze-fp4" kind="relationship" relationship="viewControllers" id="pxv-e8-G5c"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hKO-j9-fpa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-213.04347826086959" y="93.75"/>
+            <point key="canvasLocation" x="1826" y="94"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hn2-I8-CiF">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tet-qU-KKY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kFi-pe-w0B">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="KCa-5l-cXj" kind="relationship" relationship="rootViewController" id="hBq-1M-LAr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eab-AN-I9B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-16" y="94"/>
         </scene>
     </scenes>
     <resources>
