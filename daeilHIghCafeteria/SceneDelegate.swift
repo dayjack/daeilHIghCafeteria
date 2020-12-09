@@ -12,20 +12,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        /*
-        if let windowScene = scene as? UIWindowScene {
-            let window = UIWindow(windowScene: windowScene)
-            let ad = UIApplication.shared.delegate as? AppDelegate
-            if ad?.schoolKey == "" {
-                window.rootViewController = LoginSignupVC()
-            } else {
-                window.rootViewController = ShowLunchMenuTableViewController()
-            }
-            self.window = window
-            window.makeKeyAndVisible()
+        UserDefaults.standard.string(forKey: "schoolKey")
+        guard let winScene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: winScene)
+        if UserDefaults.standard.string(forKey: "schoolKey") == nil {
+            window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "firstLoginNavi")
+        } else {
+            window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabVC")
         }
-       */
-        guard let _ = (scene as? UIWindowScene) else { return }
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

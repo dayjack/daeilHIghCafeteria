@@ -26,7 +26,7 @@ class ShowDinnerMenuTableViewController: UITableViewController {
         let date = Int(currentDateDay_String)
         // API 호출을 위한 URI생성
         // https://schoolmenukr.ml/api/[학교유형]/[학교코드]?[변수명1]=[값1]&[변수명2]=[값2]
-         let url = "https://schoolmenukr.ml/api/high/\(schoolKey)?month=\(month!)&date=\(date!)&allergy=hidden"
+         let url = "https://schoolmenukr.ml/api/high/\(schoolKey)?month=\(month!)&date=\(date!)"
          let apiURI: URL! = URL(string: url)
          // API 호출
          let apidata = try! Data(contentsOf: apiURI)
@@ -43,12 +43,13 @@ class ShowDinnerMenuTableViewController: UITableViewController {
             // 아침, 점심, 저녁은 각각 배열로 이루어짐. (아침 데이터 사용 안함)
             let dinner = tmenu["dinner"] as? [String]
             dinnerMenu = dinner!
+            NSLog("\n\ndinnerMenu: \(dinnerMenu)\n\n")
         } catch {
             NSLog("\n\napi error\n\n")
         }
         month_Int = month
         date_Int = date
-        self.navigationItem.title? = "\(month_Int!)월 \(date_Int!)일 점심 메뉴"
+        self.navigationItem.title? = "\(month_Int!)월 \(date_Int!)일 저녁 메뉴"
     }
     var dinnerMenu = [String]()
     var month_Int: Int?
@@ -66,5 +67,24 @@ class ShowDinnerMenuTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "lunchCell")!
         cell.textLabel?.text = row
         return cell
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let allergynumarr: [Character] = (self.dinnerMenu[indexPath.row]).filter { $0.isNumber || $0 == "."}
+        var allergystr: String = String(allergynumarr)
+        allergystr.removeLast()
+        let allergy_arr = allergystr.components(separatedBy: ".")
+        let allergy_info: [Int : String] = [1 : "난류", 2: "우유", 3: "메밀 ", 4: "땅콩", 5: "대두", 6 : "밀", 7 : "고등어",8 : "게", 9 : "새우",10 :  "돼지고기", 11 : "복숭아", 12 : "토마토", 13 : "아황산염", 14 : "호두", 15 : "닭고기", 16 : "쇠고기", 17 : "오징어", 18 : "조개류"]
+        NSLog("\(allergy_arr)")
+        var alert_message: String = ""
+        for row in allergy_arr {
+            alert_message += "\(allergy_info[Int(row)!]!)\n"
+        }
+        
+        let alert = UIAlertController(title: "알레르기정보", message: "\(alert_message)", preferredStyle: .alert)
+        
+        let cancel = UIAlertAction(title: "확인", style: .cancel)
+        alert.addAction(cancel)
+        self.present(alert, animated: false)
     }
 }

@@ -11,7 +11,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var cafeData = Cafeteria()
-    var schoolKey: String?
+    var schoolKey: String? = UserDefaults.standard.string(forKey: "schoolKey") ?? ""
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         

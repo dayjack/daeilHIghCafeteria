@@ -198,7 +198,7 @@
                     <navigationItem key="navigationItem" id="4sz-yK-S7O">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="5Zy-UY-cgo">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="N8K-ja-loF">
-                                <rect key="frame" x="147" y="516" width="121" height="51"/>
+                                <rect key="frame" x="273" y="0.0" width="121" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="입력"/>
@@ -270,7 +270,7 @@
         <!--Navigation Controller-->
         <scene sceneID="hn2-I8-CiF">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tet-qU-KKY" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="firstLoginNavi" automaticallyAdjustsScrollViewInsets="NO" id="tet-qU-KKY" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kFi-pe-w0B">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

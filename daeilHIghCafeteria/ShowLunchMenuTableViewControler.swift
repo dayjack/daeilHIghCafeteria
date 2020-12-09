@@ -27,7 +27,7 @@ class ShowLunchMenuTableViewController: UITableViewController {
         let date = Int(currentDateDay_String)
         // API 호출을 위한 URI생성
         // https://schoolmenukr.ml/api/[학교유형]/[학교코드]?[변수명1]=[값1]&[변수명2]=[값2]
-         let url = "https://schoolmenukr.ml/api/high/\(schoolKey)?month=\(month!)&date=\(date!)&allergy=hidden"
+         let url = "https://schoolmenukr.ml/api/high/\(schoolKey)?month=\(month!)&date=\(date!)"
          let apiURI: URL! = URL(string: url)
          // API 호출
          let apidata = try! Data(contentsOf: apiURI)
@@ -44,6 +44,7 @@ class ShowLunchMenuTableViewController: UITableViewController {
             // 아침, 점심, 저녁은 각각 배열로 이루어짐. (아침 데이터 사용 안함)
             let lunch = tmenu["lunch"] as? [String]
             lunchMenu = lunch!
+            NSLog("\n\ndinnerMenu: \(lunchMenu)\n\n")
         } catch {
             NSLog("\n\napi error\n\n")
         }
@@ -69,5 +70,27 @@ class ShowLunchMenuTableViewController: UITableViewController {
         cell.textLabel?.text = row
         return cell
     }
-    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let allergynumarr: [Character] = (self.lunchMenu[indexPath.row]).filter { $0.isNumber || $0 == "."}
+        var allergystr: String = String(allergynumarr)
+        allergystr.removeLast()
+        let allergy_arr = allergystr.components(separatedBy: ".")
+        let allergy_info: [Int : String] = [1 : "난류", 2: "우유", 3: "메밀 ", 4: "땅콩", 5: "대두", 6 : "밀", 7 : "고등어",8 : "게", 9 : "새우",10 :  "돼지고기", 11 : "복숭아", 12 : "토마토", 13 : "아황산염", 14 : "호두", 15 : "닭고기", 16 : "쇠고기", 17 : "오징어", 18 : "조개류"]
+        NSLog("\(allergy_arr)")
+        var alert_message: String = ""
+        for row in allergy_arr {
+            alert_message += "\(allergy_info[Int(row)!]!)\n"
+        }
+        
+        let alert = UIAlertController(title: "알레르기정보", message: "\(alert_message)", preferredStyle: .alert)
+        
+        let cancel = UIAlertAction(title: "확인", style: .cancel)
+        alert.addAction(cancel)
+        self.present(alert, animated: false)
+    }
 }
+/*
+ 1난류 2우유 3메밀 4땅콩 5대두 6밀 7고등어8게 9새우 10돼지고기
+ 11복숭아 12토마토 13아황산염14호두 15닭고기 16쇠고기 17오징어 18조개류
+ **/
