@@ -26,6 +26,8 @@ class LoginSignupVC: UIViewController {
             let ad = UIApplication.shared.delegate as? AppDelegate
             UserDefaults.standard.set(inputSchoolkey.text, forKey: "schoolKey")
             ad?.schoolKey = inputSchoolkey.text
+            ad?.loadCafeData()
+            NSLog("화면 전환")
             self.navigationController?.pushViewController(LunchVC, animated: true)
         }
     }
