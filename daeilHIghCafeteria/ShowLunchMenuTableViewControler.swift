@@ -39,6 +39,7 @@ class ShowLunchMenuTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let allergynumarr: [Character] = (self.lunchMenu[indexPath.row]).filter { $0.isNumber || $0 == "."}
+        if allergynumarr.isEmpty { return }
         var allergystr: String = String(allergynumarr)
         allergystr.removeLast()
         let allergy_arr = allergystr.components(separatedBy: ".")
