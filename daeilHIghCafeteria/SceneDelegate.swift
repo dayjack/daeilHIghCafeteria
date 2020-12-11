@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if UserDefaults.standard.string(forKey: "schoolKey") == nil {
             window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "firstLoginNavi")
         } else {
-            ad?.loadCafeData()
+            _ = ad?.loadCafeData()
             window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabVC")
         }
         window?.makeKeyAndVisible()

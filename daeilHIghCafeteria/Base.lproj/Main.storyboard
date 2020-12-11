@@ -12,6 +12,7 @@
         <!--점심 메뉴 보기-->
         <scene sceneID="uep-UC-qfv">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="17F-el-ZiQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AhD-LE-E8C" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="점심 메뉴 보기" id="DDu-zJ-e56"/>
                     <toolbarItems/>
@@ -24,9 +25,8 @@
                         <segue destination="Yod-cf-vyI" kind="relationship" relationship="rootViewController" id="Q6c-Z8-Ayr"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="17F-el-ZiQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2889.8550724637685" y="93.75"/>
+            <point key="canvasLocation" x="2749" y="94"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="gnL-AB-d65">
@@ -198,13 +198,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ea9-o1-ojm">
-                                <rect key="frame" x="93" y="431" width="239" height="34"/>
+                                <rect key="frame" x="52" y="431" width="311" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZRv-FF-2Pr">
-                                <rect key="frame" x="93" y="234" width="239" height="56"/>
+                                <rect key="frame" x="88" y="236" width="239" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="학교 코드를 검색하세요"/>
                                 <connections>
@@ -234,7 +234,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C8X-H7-ORE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="696" y="94"/>
+            <point key="canvasLocation" x="695.6521739130435" y="93.75"/>
         </scene>
         <!--학교 코드를 검색하세요-->
         <scene sceneID="MqP-dP-ikU">
