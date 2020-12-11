@@ -12,7 +12,6 @@
         <!--점심 메뉴 보기-->
         <scene sceneID="uep-UC-qfv">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="17F-el-ZiQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AhD-LE-E8C" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="점심 메뉴 보기" id="DDu-zJ-e56"/>
                     <toolbarItems/>
@@ -25,6 +24,7 @@
                         <segue destination="Yod-cf-vyI" kind="relationship" relationship="rootViewController" id="Q6c-Z8-Ayr"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="17F-el-ZiQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2749" y="94"/>
         </scene>
@@ -187,7 +187,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hBl-ju-I93" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3608.6956521739135" y="93.75"/>
+            <point key="canvasLocation" x="3628" y="94"/>
         </scene>
         <!--Login SignupVC-->
         <scene sceneID="gSy-Je-i10">
