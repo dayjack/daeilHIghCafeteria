@@ -9,9 +9,9 @@
 import UIKit
 
 class ShowLunchMenuTableViewController: UITableViewController {
+    let ad = UIApplication.shared.delegate as? AppDelegate
     // MARK: -viewdidLoad 날짜 받아오기 api데이터 cafeClass에 저장
     override func viewDidLoad() {
-        let ad = UIApplication.shared.delegate as? AppDelegate
         //let schoolKey: String = (ad?.schoolKey)!
         lunchMenu = (ad?.cafeData.lunch)!
         month_Int = (ad?.cafeData.month)!
@@ -37,19 +37,16 @@ class ShowLunchMenuTableViewController: UITableViewController {
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         let allergynumarr: [Character] = (self.lunchMenu[indexPath.row]).filter { $0.isNumber || $0 == "."}
         if allergynumarr.isEmpty { return }
         var allergystr: String = String(allergynumarr)
         allergystr.removeLast()
         let allergy_arr = allergystr.components(separatedBy: ".")
-        let allergy_info: [Int : String] = [1 : "난류", 2: "우유", 3: "메밀 ", 4: "땅콩", 5: "대두", 6 : "밀", 7 : "고등어",8 : "게", 9 : "새우",10 :  "돼지고기", 11 : "복숭아", 12 : "토마토", 13 : "아황산염", 14 : "호두", 15 : "닭고기", 16 : "쇠고기", 17 : "오징어", 18 : "조개류", 19 : "잣"]
         NSLog("\(allergy_arr)")
         var alert_message: String = ""
         for row in allergy_arr {
-            alert_message += "\(allergy_info[Int(row)!]!)\n"
+            alert_message += "\(ad?.cafeData.allergy_info[Int(row)!]! ?? "")\n"
         }
-        
         let alert = UIAlertController(title: "알레르기정보", message: "\(alert_message)", preferredStyle: .alert)
         
         let cancel = UIAlertAction(title: "확인", style: .cancel)
