@@ -35,7 +35,7 @@ class LoginSignupVC: UIViewController {
             // 학교코드 유효
             if ad?.loadCafeData() == true {
                 NSLog("화면 전환")
-                self.navigationController?.pushViewController(LunchVC, animated: true)
+                self.present(LunchVC, animated: true)
             } else { // 학교코드 유효하지 않음 알림창 생성
                 NSLog("error else")
                 // schoolKey 초기화

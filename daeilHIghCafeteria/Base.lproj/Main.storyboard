@@ -12,7 +12,7 @@
         <!--점심 메뉴 보기-->
         <scene sceneID="uep-UC-qfv">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AhD-LE-E8C" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="AhD-LE-E8C" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="점심 메뉴 보기" id="DDu-zJ-e56"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="BkB-hQ-q1R">
@@ -149,7 +149,7 @@
         <!--Title-->
         <scene sceneID="lHO-Gw-gjQ">
             <objects>
-                <tableViewController storyboardIdentifier="ShowLunchMenuTableViewController" id="Yod-cf-vyI" customClass="ShowLunchMenuTableViewController" customModule="daeilHIghCafeteria" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ShowLunchMenuTableViewController" modalPresentationStyle="fullScreen" id="Yod-cf-vyI" customClass="ShowLunchMenuTableViewController" customModule="daeilHIghCafeteria" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dba-Zi-PNe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -269,7 +269,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="uSr-jb-kvr">
             <objects>
-                <tabBarController storyboardIdentifier="tabVC" automaticallyAdjustsScrollViewInsets="NO" id="ddB-rh-KTi" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabVC" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="ddB-rh-KTi" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="gYJ-Rz-BPL"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zFt-Uu-cNK">
