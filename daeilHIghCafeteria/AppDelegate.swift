@@ -11,9 +11,11 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var cafeData = Cafeteria()
+    var school_info = [SchoolData]()
     var schoolKey: String? = UserDefaults.standard.string(forKey: "schoolKey") ?? ""
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        searchSchoolCode()
         return true
     }
     
@@ -93,6 +95,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // cafeteria 클래스에 데이터 대입
             cafeData.lunch = lunch
             cafeData.dinner = dinner
+        } catch {
+            NSLog("\n\napi error\n\n")
+        }
+        return true
+    }
+    
+    func searchSchoolCode() -> Bool {
+        var apidata: Data
+        do {
+            let url = "https://schoolmenukr.ml/code/api?q=강서고등학교"
+            let turl = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+            let apiURI: URL! = URL(string: turl)
+            // API 호출
+            apidata = try Data(contentsOf: apiURI)
+            NSLog("\(type(of: apidata))")
+            // 데이터 전송 결과 로그 출력
+            let log = NSString(data: apidata, encoding: String.Encoding.utf8.rawValue) ?? ""
+            NSLog("API Result = \(log)")
+        } catch {
+            NSLog("error")
+            return false
+        }
+        // 데이터 파싱
+        do {
+            var tempschool = SchoolData()
+            let apiDictionary = try JSONSerialization.jsonObject(with: apidata, options: []) as! NSDictionary
+            let school = apiDictionary["school_infos"] as! NSArray
+            for row in 0..<school.count {
+                let tschool = school[row] as! NSDictionary
+                tempschool.school_code = tschool["code"] as! String
+                tempschool.school_name = tschool["name"] as! String
+                tempschool.school_address = tschool["address"] as! String
+                school_info.append(tempschool)
+            }
+            NSLog("\(school_info)")
         } catch {
             NSLog("\n\napi error\n\n")
         }

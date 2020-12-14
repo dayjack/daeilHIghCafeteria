@@ -216,20 +216,18 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="4sz-yK-S7O">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="5Zy-UY-cgo">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="N8K-ja-loF">
-                                <rect key="frame" x="273" y="0.0" width="121" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="입력"/>
-                                <connections>
-                                    <action selector="submitSchoolkey:" destination="KCa-5l-cXj" eventType="touchUpInside" id="YNC-9X-W2J"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
+                        <nil key="title"/>
+                        <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="BFg-vH-3pV">
+                            <rect key="frame" x="80" y="5" width="255" height="34"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="search" id="5Zy-UY-cgo"/>
                     </navigationItem>
                     <connections>
                         <outlet property="inputSchoolkey" destination="Ea9-o1-ojm" id="zP3-Nx-AU0"/>
+                        <outlet property="searchSchoolTF" destination="BFg-vH-3pV" id="3i6-vp-Rp4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C8X-H7-ORE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -264,7 +262,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w5E-y6-ebC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1425" y="-594"/>
+            <point key="canvasLocation" x="1825" y="-599"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="uSr-jb-kvr">
