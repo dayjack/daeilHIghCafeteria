@@ -23,21 +23,19 @@ class LoginSignupVC: UIViewController {
     @IBAction func searchButton(_ sender: Any) {
         ad.school_info = [SchoolData]()
         if ad.searchSchoolCode(schoolname: searchSchoolTF.text) {
+            
             tableview.reloadData()
         } else {
-            
+            let alert = UIAlertController(title: "경고", message: "학교명 공백", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "확인", style: .cancel))
+            self.present(alert, animated: false)
         }
-        
-        
     }
-    
-    
 }
 extension LoginSignupVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (self.ad.school_info.count)
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "showSchoolResultCell") as! showSchoolResultCell
         for row in 0..<ad.school_info.count {
