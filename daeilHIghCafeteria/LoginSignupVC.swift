@@ -16,7 +16,7 @@ class LoginSignupVC: UIViewController {
         searchSchoolTF.placeholder = "학교를 검색하세요"
         searchSchoolTF.spellCheckingType = .no
         searchSchoolTF.backgroundColor = .clear
-        searchSchoolTF.font = UIFont(name: "runningmanjeonsomin", size: 14)
+        searchSchoolTF.font = UIFont(name: "runningmanjeonsomin", size: 16)
     }
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var searchSchoolTF: UITextField!
@@ -51,6 +51,7 @@ extension LoginSignupVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         ad.schoolKey = ad.school_info[indexPath.row].school_code
         if ad.loadCafeData() {
+            UserDefaults.standard.set(ad.schoolKey, forKey: "schoolKey")
             let uvc = self.storyboard!.instantiateViewController(withIdentifier: "tabVC")
             self.present(uvc, animated: true)
         } else {
