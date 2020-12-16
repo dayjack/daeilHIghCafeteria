@@ -13,10 +13,10 @@ class ShowLunchMenuTableViewController: UITableViewController {
     // MARK: -viewdidLoad 날짜 받아오기 api데이터 cafeClass에 저장
     override func viewDidLoad() {
         //let schoolKey: String = (ad?.schoolKey)!
-        lunchMenu = (ad?.cafeData.lunch)!
-        month_Int = (ad?.cafeData.month)!
-        date_Int = (ad?.cafeData.date)!
-        self.navigationItem.title? = "\(month_Int!)월 \(date_Int!)일 점심 메뉴"
+        lunchMenu = (ad?.cafeData[0].lunch)!
+        month_Int = (ad?.cafeData[0].month)!
+        date_Int = (ad?.cafeData[0].date)!
+        self.navigationItem.title? = "\(month_Int!)월 \(date_Int!)일 저녁 메뉴"
     }
     var lunchMenu = [String]()
     var month_Int: Int?
@@ -45,7 +45,7 @@ class ShowLunchMenuTableViewController: UITableViewController {
         NSLog("\(allergy_arr)")
         var alert_message: String = ""
         for row in allergy_arr {
-            alert_message += "\(ad?.cafeData.allergy_info[Int(row)!]! ?? "")\n"
+            alert_message += "\(ad?.cafeData[0].allergy_info[Int(row)!]! ?? "")\n"
         }
         let alert = UIAlertController(title: "알레르기정보", message: "\(alert_message)", preferredStyle: .alert)
         

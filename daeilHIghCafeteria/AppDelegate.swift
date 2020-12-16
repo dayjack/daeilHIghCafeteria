@@ -10,7 +10,7 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    var cafeData = Cafeteria()
+    var cafeData = [Cafeteria]()
     var school_info = [SchoolData]()
     var schoolKey: String? = UserDefaults.standard.string(forKey: "schoolKey") ?? ""
     
@@ -46,10 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let month = Int(currentDateMonth_String)
         let date = Int(currentDateDay_String)
         
-        // Cafeteria 클래스에 일, 월 데이터 저장
-        cafeData.month = month
-        cafeData.date = date
-        
         // API 호출을 위한 URI생성
         // https://schoolmenukr.ml/api/[학교유형]/[학교코드]?[변수명1]=[값1]&[변수명2]=[값2]
         /*
@@ -83,17 +79,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 데이터 파싱
         do {
+            var tempMenu = Cafeteria()
             let apiDictionary = try JSONSerialization.jsonObject(with: apidata, options: []) as! NSDictionary
             // 데이터가 배열로 받아짐. 오늘치 메뉴데이터는 변수명[0]으로 접근
             let menu = apiDictionary["menu"] as! NSArray
-            // 데이터를 NSDictionary로 캐스팅 (개별요쇼 접근을 쉽게 하기위해)
-            let tmenu = menu[0] as! NSDictionary
-            // 아침, 점심, 저녁은 각각 배열로 이루어짐. (아침 데이터 사용 안함)
-            let lunch = tmenu["lunch"] as? [String]
-            let dinner = tmenu["dinner"] as? [String]
-            // cafeteria 클래스에 데이터 대입
-            cafeData.lunch = lunch
-            cafeData.dinner = dinner
+            
+            for row in 0..<menu.count {
+                // 데이터를 NSDictionary로 캐스팅 (개별요쇼 접근을 쉽게 하기위해)
+                let tmenu = menu[row] as! NSDictionary
+                // 아침, 점심, 저녁은 각각 배열로 이루어짐. (아침 데이터 사용 안함)
+                tempMenu.lunch = tmenu["lunch"] as? [String]
+                tempMenu.dinner = tmenu["dinner"] as? [String]
+                // Cafeteria 클래스에 일, 월 데이터 저장
+                tempMenu.month = month
+                tempMenu.date = date
+                cafeData.append(tempMenu)
+                tempMenu = Cafeteria()
+            }
         } catch {
             NSLog("\n\napi error\n\n")
         }
@@ -114,7 +116,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //NSLog("\(type(of: apidata))")
             // 데이터 전송 결과 로그 출력
             let log = NSString(data: apidata, encoding: String.Encoding.utf8.rawValue) ?? ""
-            //NSLog("API Result = \(log)")
+            NSLog("API Result = \(log)")
         } catch {
             NSLog("error")
             return false
