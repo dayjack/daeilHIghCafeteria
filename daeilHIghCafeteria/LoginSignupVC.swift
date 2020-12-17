@@ -50,7 +50,7 @@ extension LoginSignupVC: UITableViewDelegate, UITableViewDataSource {
         ad.schoolKey = ad.school_info[indexPath.row].school_code
         if ad.loadCafeData() {
             UserDefaults.standard.set(ad.schoolKey, forKey: "schoolKey")
-            let uvc = self.storyboard!.instantiateViewController(withIdentifier: "tabVC")
+            let uvc = self.storyboard!.instantiateViewController(withIdentifier: "sideVC")
             self.present(uvc, animated: true)
         } else {
             
