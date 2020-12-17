@@ -17,10 +17,18 @@ class ShowLunchMenuTableViewController: UITableViewController {
         month_Int = (ad?.cafeData[0].month)!
         date_Int = (ad?.cafeData[0].date)!
         self.navigationItem.title? = "\(month_Int!)월 \(date_Int!)일 저녁 메뉴"
+        
+        if let revealVC = self.revealViewController() {
+            sideBarButton.target = revealVC
+            sideBarButton.action = #selector(revealVC.revealToggle(_:)) // 버튼 클릭 시 Toggle(_:)
+            self.view.addGestureRecognizer(revealVC.panGestureRecognizer())
+            
+        }
     }
     var lunchMenu = [String]()
     var month_Int: Int?
     var date_Int: Int?
+    @IBOutlet weak var sideBarButton: UIBarButtonItem!
     
     // MARK: - tableView 설정 점심 메뉴 데이터 셀로 생성 & 대입
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
