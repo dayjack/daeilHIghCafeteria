@@ -31,6 +31,9 @@ class LoginSignupVC: UIViewController {
             self.present(alert, animated: false)
         }
     }
+    
+    
+    
 }
 extension LoginSignupVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
